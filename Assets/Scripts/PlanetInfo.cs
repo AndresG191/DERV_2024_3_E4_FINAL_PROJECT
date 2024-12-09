@@ -1,5 +1,7 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI; // Asegúrate de incluir esta librería
 
 public class PlanetInfo : MonoBehaviour
 {
@@ -13,6 +15,29 @@ public class PlanetInfo : MonoBehaviour
     [SerializeField] private TextMeshProUGUI planetRotationText;
     [SerializeField] private TextMeshProUGUI planetAtmosphereText;
     [SerializeField] private TextMeshProUGUI planetMoonsText;
+    [SerializeField] private string nextSceneName; // Nombre de la siguiente escena a cargar
+    [SerializeField] private GameObject nextButton; // Referencia al botón
+
+    void Start()
+    {
+        // Verificar que nextButton no sea nulo antes de añadir el listener
+        if (nextButton != null)
+        {
+            Button buttonComponent = nextButton.GetComponent<Button>();
+            if (buttonComponent != null)
+            {
+                buttonComponent.onClick.AddListener(LoadNextScene);
+            }
+            else
+            {
+                Debug.LogError("El GameObject nextButton no tiene un componente Button adjunto.");
+            }
+        }   
+        else
+        {
+            Debug.LogError("Next Button no está asignado en el Inspector");
+        }
+    }
 
     void Update()
     {
@@ -37,7 +62,7 @@ public class PlanetInfo : MonoBehaviour
         PlanetData planetData = planet.GetComponent<PlanetData>();
 
         string planetName = planet.name;
-        string planetInfo = "Hola " + planetName + "\n";
+        string planetInfo = "Este es: " + planetName + "\n";
         planetInfo += "Descripción: " + planetData.description + "\n";
         planetInfo += "Masa: " + planetData.mass + "\n";
         planetInfo += "Radio: " + planetData.radius + "\n";
@@ -59,5 +84,11 @@ public class PlanetInfo : MonoBehaviour
         planetMoonsText.text = "Número de Lunas: " + planetData.numberOfMoons;
 
         infoPanel.SetActive(true);
+    }
+
+    void LoadNextScene()
+    {
+        // Cambiar a la siguiente escena
+        SceneManager.LoadScene(2);
     }
 }

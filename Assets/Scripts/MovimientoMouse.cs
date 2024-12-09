@@ -8,12 +8,12 @@ public class MovimientoMouse : MonoBehaviour
     public float mouseSensitivty = 2f;
     float cameraVerticalRotation = 0f;
 
-    bool esconderCursor = true;
+    //bool esconderCursor = true;
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;   
+        //Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;   
     }
 
     // Update is called once per frame
