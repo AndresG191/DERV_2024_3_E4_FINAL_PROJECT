@@ -13,7 +13,6 @@ public class PlanetRotation : MonoBehaviour
     {
         rig = GetComponent<Rigidbody>();
     }
-
     void Start()
     {
         // Desactivar la fricción angular para mantener la velocidad constante

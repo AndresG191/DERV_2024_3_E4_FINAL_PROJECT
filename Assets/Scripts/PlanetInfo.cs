@@ -28,15 +28,9 @@ public class PlanetInfo : MonoBehaviour
             {
                 buttonComponent.onClick.AddListener(LoadNextScene);
             }
-            else
-            {
-                Debug.LogError("El GameObject nextButton no tiene un componente Button adjunto.");
-            }
+            
         }   
-        else
-        {
-            Debug.LogError("Next Button no está asignado en el Inspector");
-        }
+       
     }
 
     void Update()
